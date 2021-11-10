@@ -113,17 +113,21 @@ void loop()
   if (elapsed > 2000) { // If 2 or more seconds have passed since start
     start = millis(); // reset start time
     Serial.println("Swapping");
-    Serial.println(oar_1.read());
-    Serial.println(oar_2.read());
     
-    if (oar_1.read() = -180) // Swap directions on all motors
+    if (oar_1.read() == -180) // Swap directions on all motors
       oar_1.write(180);
-    else //if (oar_1.read() > -180)
+    else {//if (oar_1.read() > -180)
       oar_1.write(-180);
-    if (oar_2.read() = -180)
+      Serial.println("Oar 1 else triggered");
+      Serial.println(oar_1.read());
+    }
+    if (oar_2.read() == -180)
       oar_1.write(180);
-    else //if (oar_2.read() > -180)
+    else {//if (oar_2.read() > -180)
       oar_2.write(-180);  
+      Serial.println("Oar 2 else triggered");
+      Serial.println(oar_2.read());
+    }
   }
   
   // Set the tempo based on the switch
